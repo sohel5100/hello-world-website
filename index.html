@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello World</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: rgba(30, 41, 59, 0.7);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      padding: 24px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient background glow */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(129, 140, 248, 0.1) 40%, transparent 70%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      width: 100%;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 24px;
+      padding: 48px 36px;
+      text-align: center;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      margin-bottom: 24px;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #38bdf8;
+      box-shadow: 0 0 10px #38bdf8;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 3.75rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 16px;
+    }
+
+    p.subtitle {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    .greetings-box {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 28px;
+    }
+
+    .greeting-text {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #e2e8f0;
+      min-height: 2.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .greeting-lang {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .btn {
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #0f172a;
+      background: #38bdf8;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 12px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 14px 0 rgba(56, 189, 248, 0.35);
+    }
+
+    .btn:hover {
+      background: #7dd3fc;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px 0 rgba(56, 189, 248, 0.45);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    footer {
+      margin-top: 24px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    footer a {
+      color: #38bdf8;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="badge">
+      <span class="badge-dot"></span> Live on the Web
+    </div>
+
+    <h1>Hello, World!</h1>
+    <p class="subtitle">Welcome to your new website hosted on GitHub Pages.</p>
+
+    <div class="greetings-box">
+      <div id="greeting" class="greeting-text">Hello, World! 🌍</div>
+      <div id="language" class="greeting-lang">English</div>
+    </div>
+
+    <button id="next-btn" class="btn">Say Hello in another language</button>
+
+    <footer>
+      Created with ❤️ &bull; Hosted on <a href="https://github.com/sohel5100" target="_blank" rel="noopener">GitHub Pages</a>
+    </footer>
+  </div>
+
+  <script>
+    const greetings = [
+      { text: "Hello, World! 🌍", lang: "English" },
+      { text: "¡Hola, Mundo! 🇪🇸", lang: "Spanish" },
+      { text: "Bonjour, le Monde! 🇫🇷", lang: "French" },
+      { text: "Ciao, Mondo! 🇮🇹", lang: "Italian" },
+      { text: "Hallo, Welt! 🇩🇪", lang: "German" },
+      { text: "Olá, Mundo! 🇵🇹", lang: "Portuguese" },
+      { text: "नमस्ते दुनिया! 🇮🇳", lang: "Hindi" },
+      { text: "こんにちは、世界！ 🇯🇵", lang: "Japanese" },
+      { text: "안녕하세요, 세계! 🇰🇷", lang: "Korean" },
+      { text: "你好，世界！ 🇨🇳", lang: "Chinese" },
+      { text: "مرحبا بالعالم! 🇸🇦", lang: "Arabic" },
+      { text: "Привет, мир! 🇷🇺", lang: "Russian" }
+    ];
+
+    let currentIndex = 0;
+    const greetingEl = document.getElementById("greeting");
+    const langEl = document.getElementById("language");
+    const nextBtn = document.getElementById("next-btn");
+
+    nextBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % greetings.length;
+      greetingEl.style.opacity = "0";
+      greetingEl.style.transform = "scale(0.95)";
+
+      setTimeout(() => {
+        greetingEl.textContent = greetings[currentIndex].text;
+        langEl.textContent = greetings[currentIndex].lang;
+        greetingEl.style.opacity = "1";
+        greetingEl.style.transform = "scale(1)";
+      }, 200);
+    });
+  </script>
+</body>
+</html>
